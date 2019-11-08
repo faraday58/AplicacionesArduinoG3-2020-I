@@ -40,6 +40,7 @@
             this.focoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.semáforoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.temperaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.focoExternoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +120,8 @@
             this.aplicacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.focoToolStripMenuItem,
             this.semáforoToolStripMenuItem,
-            this.temperaturaToolStripMenuItem});
+            this.temperaturaToolStripMenuItem,
+            this.focoExternoToolStripMenuItem});
             this.aplicacionesToolStripMenuItem.Name = "aplicacionesToolStripMenuItem";
             this.aplicacionesToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.aplicacionesToolStripMenuItem.Text = "Aplicaciones";
@@ -142,6 +144,13 @@
             this.temperaturaToolStripMenuItem.Name = "temperaturaToolStripMenuItem";
             this.temperaturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.temperaturaToolStripMenuItem.Text = "Temperatura";
+            // 
+            // focoExternoToolStripMenuItem
+            // 
+            this.focoExternoToolStripMenuItem.Name = "focoExternoToolStripMenuItem";
+            this.focoExternoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.focoExternoToolStripMenuItem.Text = "FocoExterno";
+            this.focoExternoToolStripMenuItem.Click += new System.EventHandler(this.FocoExternoToolStripMenuItem_Click);
             // 
             // FormMdiPadre
             // 
@@ -174,6 +183,7 @@
         private System.Windows.Forms.ToolStripComboBox tscmbPuertos;
         private System.Windows.Forms.ToolStripComboBox tscmbVelocidad;
         private System.Windows.Forms.ToolStripMenuItem confirmarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem focoExternoToolStripMenuItem;
     }
 }
 

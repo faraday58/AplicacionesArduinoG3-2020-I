@@ -78,5 +78,12 @@ namespace AplicacionesArduino
             miFoco.MdiParent = this;
             miFoco.Show();
         }
+
+        private void FocoExternoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FocoExterno miFoco = new FocoExterno(miPuerto);
+            miFoco.MdiParent = this;
+            miFoco.Show();
+        }
     }
 }

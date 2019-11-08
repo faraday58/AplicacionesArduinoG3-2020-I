@@ -1,43 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
-
 using System.Drawing;
-
 using System.Windows.Forms;
 
 namespace AplicacionesArduino
 {
-    public partial class Foco : Form
-
+    public partial class FocoExterno : Form
     {
-        SerialPort miPuerto ;
-        bool encender = true;
-        public Foco(SerialPort puertoSerie)
+        SerialPort miPuerto;
+        
+        public FocoExterno(SerialPort puertoSerie)
         {
             this.miPuerto = puertoSerie;
             InitializeComponent();
             ptbFoco.BackColor = Color.Aqua;
+            miPuerto.DataReceived += PtbFoco_Click;
 
         }
 
         private void PtbFoco_Click(object sender, EventArgs e)
         {
+            char caracter =Convert.ToChar(miPuerto.ReadChar());
+           
 
-            chart1.Series["serieTemperatura"].Points.AddXY(1, 2);
-
-
-            if (encender)
+            if (caracter=='a')
             {
-                miPuerto.Write("a");
+                
                 ptbFoco.BackColor = Color.Yellow;
-                encender = false;
+                
             }
             else
             {
-                miPuerto.Write("b");
+                
                 ptbFoco.BackColor = Color.Aqua;
-                encender = true;
+                
             }
         }
     }
