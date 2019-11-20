@@ -85,5 +85,13 @@ namespace AplicacionesArduino
             miFoco.MdiParent = this;
             miFoco.Show();
         }
+
+        private void TemperaturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SensaTemperatura sensaTemperatura = new SensaTemperatura(miPuerto);            
+            sensaTemperatura.MdiParent = this;           
+            sensaTemperatura.Show();
+
+        }
     }
 }

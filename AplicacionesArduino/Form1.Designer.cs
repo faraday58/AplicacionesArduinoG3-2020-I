@@ -72,7 +72,7 @@
             this.tscmbVelocidad,
             this.confirmarToolStripMenuItem});
             this.guaToolStripMenuItem.Name = "guaToolStripMenuItem";
-            this.guaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.guaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guaToolStripMenuItem.Text = "Verificar";
             this.guaToolStripMenuItem.Click += new System.EventHandler(this.GuaToolStripMenuItem_Click);
             // 
@@ -103,7 +103,7 @@
             // 
             this.conectarToolStripMenuItem.Enabled = false;
             this.conectarToolStripMenuItem.Name = "conectarToolStripMenuItem";
-            this.conectarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.conectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.conectarToolStripMenuItem.Text = "Conectar";
             this.conectarToolStripMenuItem.Click += new System.EventHandler(this.ConectarToolStripMenuItem_Click);
             // 
@@ -111,7 +111,7 @@
             // 
             this.desconectarToolStripMenuItem.Enabled = false;
             this.desconectarToolStripMenuItem.Name = "desconectarToolStripMenuItem";
-            this.desconectarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.desconectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.desconectarToolStripMenuItem.Text = "Desconectar";
             this.desconectarToolStripMenuItem.Click += new System.EventHandler(this.DesconectarToolStripMenuItem_Click);
             // 
@@ -144,6 +144,7 @@
             this.temperaturaToolStripMenuItem.Name = "temperaturaToolStripMenuItem";
             this.temperaturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.temperaturaToolStripMenuItem.Text = "Temperatura";
+            this.temperaturaToolStripMenuItem.Click += new System.EventHandler(this.TemperaturaToolStripMenuItem_Click);
             // 
             // focoExternoToolStripMenuItem
             // 

@@ -24,7 +24,7 @@ namespace AplicacionesArduino
         private void PtbFoco_Click(object sender, EventArgs e)
         {
 
-            chart1.Series["serieTemperatura"].Points.AddXY(1, 2);
+           
 
 
             if (encender)

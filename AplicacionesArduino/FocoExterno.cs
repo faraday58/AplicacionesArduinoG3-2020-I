@@ -27,14 +27,11 @@ namespace AplicacionesArduino
             if (caracter=='a')
             {
                 
-                ptbFoco.BackColor = Color.Yellow;
-                
+                ptbFoco.BackColor = Color.Yellow;                
             }
             else
-            {
-                
-                ptbFoco.BackColor = Color.Aqua;
-                
+            {                
+                ptbFoco.BackColor = Color.Aqua;                
             }
         }
     }
