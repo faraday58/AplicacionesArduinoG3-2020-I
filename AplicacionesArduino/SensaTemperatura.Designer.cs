@@ -43,6 +43,7 @@
             this.detenerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmTemperatura = new System.Windows.Forms.Timer(this.components);
             this.lstArchivos = new System.Windows.Forms.ListBox();
+            this.pgrebUpload = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.chtTemperatura)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -141,11 +142,20 @@
             this.lstArchivos.Size = new System.Drawing.Size(234, 277);
             this.lstArchivos.TabIndex = 2;
             // 
+            // pgrebUpload
+            // 
+            this.pgrebUpload.Location = new System.Drawing.Point(187, 27);
+            this.pgrebUpload.Name = "pgrebUpload";
+            this.pgrebUpload.Size = new System.Drawing.Size(203, 23);
+            this.pgrebUpload.TabIndex = 3;
+            this.pgrebUpload.Visible = false;
+            // 
             // SensaTemperatura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 450);
+            this.Controls.Add(this.pgrebUpload);
             this.Controls.Add(this.lstArchivos);
             this.Controls.Add(this.chtTemperatura);
             this.Controls.Add(this.menuStrip1);
@@ -173,5 +183,6 @@
         private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guardarEnGoogleDriveToolStripMenuItem;
         private System.Windows.Forms.ListBox lstArchivos;
+        private System.Windows.Forms.ProgressBar pgrebUpload;
     }
 }

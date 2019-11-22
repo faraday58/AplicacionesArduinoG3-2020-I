@@ -20,7 +20,7 @@ namespace AplicacionesArduino
 {
     public partial class SensaTemperatura : Form
     {
-
+        string archivopdf;
         #region Configuración de Google Drive
         static string[] Scopes = { DriveService.Scope.Drive };
         static string ApplicationName = "Drive API .NET Quickstart";
@@ -53,10 +53,12 @@ namespace AplicacionesArduino
         private void GuardarEnGoogleDriveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Google();
+            
         }
 
         private void Google()
         {
+            
             UserCredential credential;
 
             using (var stream =
@@ -95,27 +97,77 @@ namespace AplicacionesArduino
             request.Fields = "id";
             request.Execute();
 
-            
-
-
-            /*
-            // List files.
-            IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
-                .Files;
-            Console.WriteLine("Files:");
-            if (files != null && files.Count > 0)
+            //Subir el archivo
+            if (System.IO.File.Exists(archivopdf))
             {
-                foreach (var file in files)
+                Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
+                body.Name = System.IO.Path.GetFileName(archivopdf);
+                body.Description = "Archivo de temperatura";
+                body.MimeType = "application/pdf";
+                // body.Parents = new List<string> { _parent };// UN comment if you want to upload to a folder(ID of parent folder need to be send as paramter in above method)
+                byte[] byteArray = System.IO.File.ReadAllBytes(archivopdf);
+                System.IO.MemoryStream stream = new System.IO.MemoryStream(byteArray);
+                try
                 {
-                    lstArchivos.Items.Add(file.Name+" "+ file.Id);
+                    FilesResource.CreateMediaUpload  requestupload= service.Files.Create(body, stream, "application/vnd.google-apps.file");
+                    pgrebUpload.Visible = true;
+                    requestupload.SupportsTeamDrives = true;
+                    // You can bind event handler with progress changed event and response recieved(completed event)
+                    requestupload.ProgressChanged += Request_ProgressChanged;
+                    requestupload.ResponseReceived += Request_ResponseReceived;
+                    requestupload.Upload();
+                    //requestupload.ResponseBody;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Error Occured");
+                    //return null;
                 }
             }
             else
             {
-                MessageBox.Show("No hay archivos");
+                MessageBox.Show("El archivo no existe");
+                //return null;
             }
-            */
+
+
+        /*
+        // List files.
+        IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
+            .Files;
+        Console.WriteLine("Files:");
+        if (files != null && files.Count > 0)
+        {
+            foreach (var file in files)
+            {
+                lstArchivos.Items.Add(file.Name+" "+ file.Id);
+            }
         }
+        else
+        {
+            MessageBox.Show("No hay archivos");
+        }
+        */
+    }
+
+
+        private void Request_ProgressChanged(Google.Apis.Upload.IUploadProgress obj)
+        {
+           // pgrebUpload.Value++;
+        }
+
+        private void Request_ResponseReceived(Google.Apis.Drive.v3.Data.File obj)
+        {
+            if (obj != null)
+            {
+                MessageBox.Show("El archivo ya fue cargado--" + obj.Id);
+            }
+           // pgrebUpload.Visible = false;
+        }
+
+
+
+
 
         private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,6 +176,7 @@ namespace AplicacionesArduino
             saveFileDialog.Filter = "(*.pdf)|*.pdf";
             if( saveFileDialog.ShowDialog() == DialogResult.OK  )
             {
+                archivopdf = saveFileDialog.FileName;
                 PdfWriter objPDF = PdfWriter.GetInstance(objDoc, new FileStream(saveFileDialog.FileName, FileMode.Append));
                 objDoc.Open();
                 var imagenGraficar = new MemoryStream();
